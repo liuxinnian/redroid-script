@@ -8,7 +8,7 @@ class LiteGappsChrome(General):
         "11.0.0": {
             "arm64": [
                 "https://s3.us-west-2.amazonaws.com/6minutes.io/litegapps/addon/arm64/30/gapps/Chrome/Chrome-LiteGapps-Addon-arm64-11.0.zip",
-                "4622151760254871430adbcadf3bba38",
+                "7a0d8c29dfa02d53c0e1421c36f70e1c",
             ],
         },
     }
