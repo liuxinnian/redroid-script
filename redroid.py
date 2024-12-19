@@ -3,6 +3,7 @@
 import argparse
 from stuff.gapps import Gapps
 from stuff.litegapps import LiteGapps
+from stuff.litegappschrome import LiteGappsChrome
 from stuff.magisk import Magisk
 from stuff.mindthegapps import MindTheGapps
 from stuff.ndk import Ndk
@@ -28,6 +29,10 @@ def main():
     parser.add_argument('-lg', '--install-litegapps',
                         dest='litegapps',
                         help='Install LiteGapps to ReDroid',
+                        action='store_true')
+    parser.add_argument('-lgch', '--install-litegapps-chrome',
+                        dest='chrome',
+                        help='Install LiteGapps Chrome to ReDroid',
                         action='store_true')
     parser.add_argument('-n', '--install-ndk-translation',
                         dest='ndk',
@@ -65,6 +70,10 @@ def main():
         LiteGapps(args.android).install()
         dockerfile = dockerfile + "COPY litegapps /\n"
         tags.append("litegapps")
+    if args.chrome:
+        LiteGappsChrome(args.android).install()
+        dockerfile = dockerfile + "COPY chrome /\n"
+        tags.append("chrome")
     if args.mindthegapps:
         MindTheGapps(args.android).install()
         dockerfile = dockerfile + "COPY mindthegapps /\n"
