@@ -3,22 +3,22 @@ import shutil
 from stuff.general import General
 from tools.helper import get_download_dir, host, print_color, bcolors
 
-class LiteGappsChrome(General):
+class Addons(General):
     dl_links = {
         "11.0.0": {
             "arm64": [
-                "https://s3.us-west-2.amazonaws.com/6minutes.io/litegapps/addon/arm64/30/gapps/Chrome/Chrome-LiteGapps-Addon-arm64-11.0.zip",
-                "7a0d8c29dfa02d53c0e1421c36f70e1c",
+                "https://s3.us-west-2.amazonaws.com/6minutes.io/addos/arm64/30/addons.zip",
+                "65bc2936c330dc036068d9efffcdfc63",
             ],
         },
     }
     arch = host()
     download_loc = get_download_dir()
-    dl_file_name = os.path.join(download_loc, "chrome.zip")
+    dl_file_name = os.path.join(download_loc, "addons.zip")
     dl_link = ...
     act_md5 = ...
-    copy_dir = "./chrome"
-    extract_to = "/tmp/chrome/extract"
+    copy_dir = "./addons"
+    extract_to = "/tmp/addons/extract"
 
     def __init__(self, version):
         self.version = version
@@ -26,7 +26,7 @@ class LiteGappsChrome(General):
         self.act_md5 = self.dl_links[self.version][self.arch[0]][1]
 
     def download(self):
-        print_color("Downloading LiteGapps Addon - Chrome now .....", bcolors.GREEN)
+        print_color("Downloading Addons now .....", bcolors.GREEN)
         super().download()
 
     def copy(self):
