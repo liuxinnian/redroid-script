@@ -8,7 +8,7 @@ class Addons(General):
         "11.0.0": {
             "arm64": [
                 "https://redroid.s3.us-west-2.amazonaws.com/addons/arm64/30/addons-2024-12-21.zip",
-                "17ff102e07a9fda72089a094d825f9c9",
+                "a31eff1720f3bced2dc63bc49475c4f5",
             ],
         },
     }
