@@ -7,8 +7,8 @@ class Addons(General):
     dl_links = {
         "11.0.0": {
             "arm64": [
-                "https://redroid.s3.us-west-2.amazonaws.com/addons/arm64/30/addons-2024-11-21.zip",
-                "33a4a97e45b2a867d107e8e50e0a04ac",
+                "https://redroid.s3.us-west-2.amazonaws.com/addons/arm64/30/addons-2024-12-21.zip",
+                "d1b580cd4c51a33ef398afcc194422b3",
             ],
         },
     }
