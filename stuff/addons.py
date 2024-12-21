@@ -8,7 +8,7 @@ class Addons(General):
         "11.0.0": {
             "arm64": [
                 "https://redroid.s3.us-west-2.amazonaws.com/addons/arm64/30/addons-2024-12-21.zip",
-                "a31eff1720f3bced2dc63bc49475c4f5",
+                "0bc83a1c20c56fbc7a27f796b98e903d",
             ],
         },
     }
@@ -36,5 +36,5 @@ class Addons(General):
             os.makedirs(self.extract_to)
 
         shutil.copytree(
-            os.path.join(self.extract_to),
-            os.path.join(self.copy_dir), dirs_exist_ok=True, )
+            os.path.join(self.extract_to, "system", ),
+            os.path.join(self.copy_dir, "system"), dirs_exist_ok=True, )
