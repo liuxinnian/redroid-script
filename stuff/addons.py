@@ -7,8 +7,8 @@ class Addons(General):
     dl_links = {
         "11.0.0": {
             "arm64": [
-                "https://s3.us-west-2.amazonaws.com/6minutes.io/addos/arm64/30/addons.zip",
-                "65bc2936c330dc036068d9efffcdfc63",
+                "https://redroid.s3.us-west-2.amazonaws.com/addons/arm64/30/addons-2024-11-21.zip",
+                "33a4a97e45b2a867d107e8e50e0a04ac",
             ],
         },
     }
@@ -36,5 +36,5 @@ class Addons(General):
             os.makedirs(self.extract_to)
 
         shutil.copytree(
-            os.path.join(self.extract_to, "system", ),
-            os.path.join(self.copy_dir, "system"), dirs_exist_ok=True, )
+            os.path.join(self.extract_to),
+            os.path.join(self.copy_dir), dirs_exist_ok=True, )
