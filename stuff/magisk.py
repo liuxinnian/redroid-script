@@ -7,9 +7,9 @@ from tools.helper import bcolors, download_file, host, print_color, run, get_dow
 
 class Magisk(General):
     download_loc = get_download_dir()
-    dl_link = "https://redroid.s3.us-west-2.amazonaws.com/magisk/Magisk-v27.0.apk"
+    dl_link = "https://github.com/HuskyDG/magisk-files/releases/download/1720171347/app-release.apk"
     dl_file_name = os.path.join(download_loc, "magisk.apk")
-    act_md5 = "4475064c5f6a5474e31f2f3dfafc22ed"
+    act_md5 = "3e9fa89890946e0a5d11ee2e4a36afbb"
     extract_to = "/tmp/magisk_unpack"
     copy_dir = "./magisk"
     magisk_dir = os.path.join(copy_dir, "system", "etc", "init", "magisk")
