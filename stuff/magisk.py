@@ -29,6 +29,17 @@ service bootanim /system/bin/bootanimation
 on post-fs-data
     start logd
     
+    # Debug logging
+    exec u:r:su:s0 root root -- log -p i -t Magisk "Starting Magisk initialization"
+    
+    # Check SELinux status
+    exec u:r:su:s0 root root -- log -p i -t Magisk "SELinux status:"
+    exec u:r:su:s0 root root -- getenforce
+    
+    # Check initial file permissions
+    exec u:r:su:s0 root root -- log -p i -t Magisk "Initial magisk directory contents:"
+    exec u:r:su:s0 root root -- ls -laZ /system/etc/init/magisk/
+    
     # Setup Magisk working directory
     mkdir /data/adb 755
     mkdir /data/adb/magisk 755
@@ -37,6 +48,9 @@ on post-fs-data
     mkdir /data/adb/magisk/post-fs-data.d 755
     mkdir /data/adb/magisk/service.d 755
     
+    exec u:r:su:s0 root root -- log -p i -t Magisk "Created magisk directories"
+    
+    # Start magisk daemon
     exec u:r:su:s0 root root -- /system/etc/init/magisk/magisk{arch} --daemon
     exec u:r:su:s0 root root -- /system/etc/init/magisk/magiskpolicy --live --magisk "allow * magisk_file lnk_file *"
     
@@ -56,6 +70,17 @@ on zygote-start
     exec u:r:su:s0 root root -- /sbin/magisk --zygote-restart
 
 on property:sys.boot_completed=1
+    # Check final file structure and permissions
+    exec u:r:su:s0 root root -- log -p i -t Magisk "Final file permissions check:"
+    exec u:r:su:s0 root root -- ls -laZ /system/etc/init/magisk/
+    exec u:r:su:s0 root root -- ls -laZ /data/adb/magisk/
+    exec u:r:su:s0 root root -- ls -laZ /sbin/.magisk/
+    
+    # Check SELinux contexts
+    exec u:r:su:s0 root root -- log -p i -t Magisk "Final SELinux status:"
+    exec u:r:su:s0 root root -- getenforce
+    exec u:r:su:s0 root root -- ls -Z /system/etc/init/magisk/
+    
     # Ensure proper permissions
     exec u:r:su:s0 root root -- /system/bin/chcon u:object_r:magisk_file:s0 /data/adb/magisk
     exec u:r:su:s0 root root -- /system/bin/chown -R root:root /data/adb/magisk
